@@ -1,4 +1,4 @@
-class LinkedList {
+export class LinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
@@ -8,16 +8,11 @@ class LinkedList {
         const newElement = { value: value, next: null };
         if (this.tail) {
             this.tail.next = newElement;
-            console.log("tail next:", this.tail);
         }
         this.tail = newElement;
-        console.log("tail:", this.tail);
-
         if (!this.head) {
             this.head = newElement;
-            console.log("head:", this.head);
         }
-        console.log("end append:");
     }
     prepend(value) {
         const newElement = { value: value, next: this.head };
@@ -49,41 +44,39 @@ class LinkedList {
             this.tail = currentElement;
         }
     }
+    deleteHead() {
+        if (!this.head) {
+            return;
+        }
+
+        if (this.head.next) {
+            this.head = this.head.next;
+        } else {
+            this.head = null;
+        }
+
+        return this.head;
+    }
     find(value) {
         if (!this.head) {
             return;
         }
 
         let curElement = this.head;
-        // let elements = [];
         while (curElement) {
             if (curElement.value === value) {
-                // elements.push(curElement);
-                 return curElement
+                return curElement;
             }
             curElement = curElement.next;
         }
-        return 
+        return;
     }
     insertAfter(value, afterValue) {
-        const existsElement = this.find(afterValue)
+        const existsElement = this.find(afterValue);
         if (existsElement) {
-            const newElement = {value:value,next:existsElement.next}
-            existsElement.next = newElement
+            const newElement = { value: value, next: existsElement.next };
+            existsElement.next = newElement;
         }
-        // if (!this.head) {
-        //     return;
-        // }
-
-        // let curElement = this.head;
-        // let newElement = { value: value, next: null };
-        // while (curElement) {
-        //     if (curElement.value === afterValue) {
-        //         newElement.next = curElement.next.next;
-        //         curElement.next = newElement;
-        //     }
-        //     curElement = curElement.next;
-        // }
     }
     insertBefore(value, beforeValue) {
         if (!this.head) {
@@ -104,7 +97,6 @@ class LinkedList {
                 newElement.next = curElement.next.next;
                 curElement.next = newElement;
             }
-
             curElement = curElement.next;
         }
     }
@@ -112,29 +104,29 @@ class LinkedList {
         const elements = [];
         let curElement = this.head;
         while (curElement) {
-            elements.push(curElement);
-            curElement = curElement.next;
+            elements.push(curElement)
+            curElement = curElement.next
         }
         return elements;
     }
 }
 
-const linkedList = new LinkedList();
+// const linkedList = new LinkedList();
 
-linkedList.append(2);
-linkedList.append("s");
-linkedList.append("s");
-linkedList.append(true);
-linkedList.prepend("first");
-linkedList.append('b');
+// linkedList.append(2);
+// linkedList.append("s");
+// linkedList.append("s");
+// linkedList.append(true);
 // linkedList.prepend("first");
-linkedList.prepend(1);
-// linkedList.delete("s");
-// linkedList.delete("first");
-linkedList.delete(true);
-// console.log("find:",linkedList.find("s"))
-// console.log("find:",linkedList.find(1))
-linkedList.insertAfter("second", "first");
-linkedList.insertAfter("oop", "b");
-// linkedList.insertBefore("s before", "s");
-console.log("all list : ", linkedList.toArray());
+// linkedList.append('b');
+// // linkedList.prepend("first");
+// linkedList.prepend(1);
+// // linkedList.delete("s");
+// // linkedList.delete("first");
+// linkedList.delete(true);
+// // console.log("find:",linkedList.find("s"))
+// // console.log("find:",linkedList.find(1))
+// linkedList.insertAfter("second", "first");
+// linkedList.insertAfter("oop", "b");
+// // linkedList.insertBefore("s before", "s");
+// console.log("all list : ", linkedList.toArray());

@@ -9,8 +9,8 @@ class Node {
 // Stack implemented using a linked list
 class Stack {
     constructor() {
-                this.top = null; // Points to the top of the stack
-                this.size = 0;   // Tracks the size of the stack
+        this.top = null; // Points to the top of the stack
+        this.size = 0; // Tracks the size of the stack
     }
 
     // Push a new element onto the stack
@@ -58,7 +58,7 @@ class Stack {
     printStack() {
         let current = this.top;
         const elements = [];
-        console.log(this.top,'top')
+        console.log(this.top, "top");
         while (current) {
             elements.push(current.value);
             current = current.next;
